@@ -1,0 +1,38 @@
+import { Tstyle } from "./TaskStyle";
+import './TaskCSS.css';
+import { AiFillDelete, AiFillEdit } from '../../../node_modules/react-icons/ai';
+import { BsFillCheckCircleFill } from '../../../node_modules/react-icons/bs';
+// const showIcons=()=>{
+
+// }
+// const hideIcons=()=>{
+//     right: '0px',
+//     transition: '0.5s'
+// // }
+// onMouseEnter={showIcons} onMouseLeave={hideIcons}
+
+const Task = ({ text, task, setTask, tasks}) => {
+    const completeTask = () => {
+        setTask(task.map((item) => {
+            if (item.key === tasks.key) {
+                return {
+                    ...item, completed: !item.completed,
+                };
+            }
+            return item;
+        })
+        );
+    };
+    const editTask = () => {
+        console.log("edittask")
+    }
+    const deleteTask = () => {
+        setTask(task.filter((el) => el.key !== tasks.key));
+    }
+    return (
+        <li style={Tstyle.container} className={`${tasks.completed ? "completed" : ""}`}>
+            {text}<span><BsFillCheckCircleFill color="green" size={25} onClick={completeTask} /> <AiFillEdit color="white" size={25} onClick={editTask} /> <AiFillDelete color="red" size={25} onClick={deleteTask} /></span>
+        </li>
+    )
+}
+export default Task; 
