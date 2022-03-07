@@ -6,17 +6,18 @@ import Footer from './Footer/Footer.js'
 import { useState } from 'react';
 
 const TodoApp = () => {
-    const [inputText,setInputText]=useState('');
+    const [inputText,setInputText]=useState();
     const [task,setTask]=useState([]);
-    // const [editText,setEditText]=useState(true);
+    const [editTask,setEditTask]=useState(true);
+    const [updateTask,setUpdateTask]=useState(null);
     return (
         <>
             < div className=" container-fluid " >
                 <div className="container ct1">
 
                     <Header />
-                    <InputArea setInputText={setInputText} task={task} setTask={setTask} inputText={inputText} />
-                    <TodoList task={task} setTask={setTask} />
+                    <InputArea setInputText={setInputText} task={task} setTask={setTask} inputText={inputText} editTask={editTask} setEditTask={setEditTask} />
+                    <TodoList task={task} setTask={setTask} editTask={editTask} setEditTask={setEditTask} inputText={inputText} setInputText={setInputText} updateTask={updateTask} setUpdateTask={setUpdateTask} />
                     <Footer task={task} setTask={setTask} />
                 </div>
 

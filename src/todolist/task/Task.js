@@ -11,7 +11,7 @@ import { BsFillCheckCircleFill } from '../../../node_modules/react-icons/bs';
 // // }
 // onMouseEnter={showIcons} onMouseLeave={hideIcons}
 
-const Task = ({ text, task, setTask, tasks}) => {
+const Task = ({id, text, task, setTask, tasks , editTask, seteditTask ,inputText,setInputText,setUpdateTask }) => {
     const completeTask = () => {
         setTask(task.map((item) => {
             if (item.key === tasks.key) {
@@ -23,15 +23,21 @@ const Task = ({ text, task, setTask, tasks}) => {
         })
         );
     };
-    const editTask = () => {
-        console.log("edittask")
+    const editTaskHandler = () => {
+        const findTask= task.find((item)=>{
+            return item.key === tasks.key
+        });
+        console.log(findTask)
+        seteditTask(false)
+        setInputText(findTask.text)
+        setUpdateTask(tasks.key)
     }
     const deleteTask = () => {
         setTask(task.filter((el) => el.key !== tasks.key));
     }
     return (
         <li style={Tstyle.container} className={`${tasks.completed ? "completed" : ""}`}>
-            {text}<span><BsFillCheckCircleFill color="green" size={25} onClick={completeTask} /> <AiFillEdit color="white" size={25} onClick={editTask} /> <AiFillDelete color="red" size={25} onClick={deleteTask} /></span>
+            {text}<span><BsFillCheckCircleFill color="green" size={25} onClick={completeTask} /> <AiFillEdit color="white" size={25} onClick={editTaskHandler} /> <AiFillDelete color="red" size={25} onClick={deleteTask} /></span>
         </li>
     )
 }
