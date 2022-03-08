@@ -1,6 +1,6 @@
 import  Sbutton  from "../button/Button.js"
 
-const InputArea = ({inputText,setInputText,task,setTask,editTask,setEditTask}) => {
+const InputArea = ({inputText,setInputText,task,setTask,editTask,setEditTask,updateTask,setUpdateTask}) => {
     const InputTextHandler=(e)=>{
      setInputText(e.target.value);   
     }
@@ -9,19 +9,26 @@ const InputArea = ({inputText,setInputText,task,setTask,editTask,setEditTask}) =
         console.log(inputText);
         if(!inputText){
             alert("plz write something");
-        // }else if(inputText && !editTask){
-        //     setTask(task.map((todo)=>{
-        //         if(todo.key === editTask)
-        //     })
+        }else if(inputText && !editTask){
+            setTask(task.map((el)=>{
+                if(el.key === updateTask ){
+                    return {
+                        ...el,text:inputText
+                    }
+                }
+                return el;
+
+            }))
+            setEditTask(true)
+        setInputText('')
+        setUpdateTask(null)
+
+
         }else{
     setTask([...task,{completed:false,text:inputText,key:Math.random()*100}]);
     setInputText('')
      }
     }
-    // const updatesTask=(e)=>{
-    //     e.preventDefault();
-    //     console.log("Updated Task")
-    // }
         return (
             
                 <form>

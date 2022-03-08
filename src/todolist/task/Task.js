@@ -27,7 +27,6 @@ const Task = ({id, text, task, setTask, tasks , editTask, seteditTask ,inputText
         const findTask= task.find((item)=>{
             return item.key === tasks.key
         });
-        console.log(findTask)
         seteditTask(false)
         setInputText(findTask.text)
         setUpdateTask(tasks.key)

@@ -16,7 +16,7 @@ const TodoApp = () => {
                 <div className="container ct1">
 
                     <Header />
-                    <InputArea setInputText={setInputText} task={task} setTask={setTask} inputText={inputText} editTask={editTask} setEditTask={setEditTask} />
+                    <InputArea setInputText={setInputText} task={task} setTask={setTask} setEditTask={setEditTask} inputText={inputText} editTask={editTask} updateTask={updateTask} setUpdateTask={setUpdateTask} />
                     <TodoList task={task} setTask={setTask} editTask={editTask} setEditTask={setEditTask} inputText={inputText} setInputText={setInputText} updateTask={updateTask} setUpdateTask={setUpdateTask} />
                     <Footer task={task} setTask={setTask} />
                 </div>
